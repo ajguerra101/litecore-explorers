@@ -3,14 +3,14 @@
 var sinon = require('sinon');
 var should = require('chai').should();
 var expect = require('chai').expect;
-var bitcore = require('bitcore-lib');
+var litecore = require('litecore-lib');
 var explorers = require('../');
 
 var Insight = explorers.Insight;
-var Address = bitcore.Address;
-var Transaction = bitcore.Transaction;
+var Address = litecore.Address;
+var Transaction = litecore.Transaction;
 var AddressInfo = explorers.models.AddressInfo;
-var Networks = bitcore.Networks;
+var Networks = litecore.Networks;
 
 describe('Insight', function() {
 
@@ -98,7 +98,7 @@ describe('Insight', function() {
       }, [invalidUtxo]);
       insight.getUtxos(address, function(error, unspent) {
         expect(error).to.exist;
-        expect(error.name).to.equal('bitcore.ErrorInvalidArgument');
+        expect(error.name).to.equal('litecore.ErrorInvalidArgument');
         expect(error.toString()).to.contain('scriptPubKey');
         callback();
       });
